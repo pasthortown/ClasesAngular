@@ -1,0 +1,35 @@
+.cabecera {
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+}
+
+.lateral {
+  background-color: yellow;
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 0;
+  width: 250px;
+}
+
+.cuerpo {
+  background-color: blue;
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  right: 0;
+  bottom: 50px;
+}
+
+.pie {
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+}
