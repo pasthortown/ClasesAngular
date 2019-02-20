@@ -8,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class BodyComponent implements OnInit {
 
   contactos = [];
-
+  contactoNuevo = {
+    cedula: "",
+    nombre: "",
+    telefono: "",
+    email: ""
+  };
   constructor() {
   }
 
   ngOnInit() {
     this.crearContacto("1720364049", "Luis Salazar", "0998600661", "lsalazar@yavirac.edu.ec");
     this.crearContacto("1720364049", "Maria  Salazar", "0998600661", "lsalazar@yavirac.edu.ec");
-    console.log(this.contactos);
   }
 
   crearContacto(cedula: string, nombre: string, telefono: string, email: string) {
