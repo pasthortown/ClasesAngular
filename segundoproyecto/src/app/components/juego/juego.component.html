@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h2>Turno: {{turno}}</h2>
+  <div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+      <table class="tablero mt-5">
+        <tbody>
+          <tr *ngFor="let fila of tablero; let indiceFila = index">
+            <td *ngFor="let columna of fila; let indiceColumna = index" (click)="juegaHumano(indiceFila,indiceColumna)">
+              <i class="{{tablero[indiceFila][indiceColumna]}}"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <button type="button" class="btn btn-primary mt-2" (click)="sortearPrimerTurno()"><h2>Jugar</h2></button>
+    </div>
+  </div>
+</div>
