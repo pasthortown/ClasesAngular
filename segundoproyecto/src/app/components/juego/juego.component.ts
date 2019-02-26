@@ -15,6 +15,13 @@ export class JuegoComponent implements OnInit {
              {id: 4, descripcion: 'Imposible'},
             ];
   nivelSeleccionado = 4;
+  activo = false;
+  segundos = 0;
+  minutos = 0;
+  horas = 0;
+  segundos2 = 0;
+  minutos2 = 0;
+  horas2 = 0;
 
   constructor() { }
 
@@ -447,5 +454,47 @@ export class JuegoComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  switchReloj() {
+    if (!this.activo) {
+      this.activo = true;
+      this.reloj();
+      this.reloj2();
+    } else {
+      this.activo = false;
+    }
+  }
+
+  reloj() {
+    if (this.activo) {
+      setTimeout(() => {
+        this.segundos++;
+        if ( this.segundos === 60 ) {
+          this.minutos++;
+          this.segundos = 0;
+        }
+        if ( this.minutos === 60 ) {
+          this.horas++;
+          this.minutos = 0;
+        }
+        this.reloj();
+      }, 1000);
+    }
+  }
+
+  reloj2() {
+    while (this.activo) {
+        this.segundos2++;
+        if ( this.segundos2 === 60 ) {
+          this.minutos2++;
+          this.segundos2 = 0;
+        }
+        if ( this.minutos2 === 60 ) {
+          this.horas2++;
+          this.minutos2 = 0;
+        }
+        this.reloj2();
+    }
   }
 }
