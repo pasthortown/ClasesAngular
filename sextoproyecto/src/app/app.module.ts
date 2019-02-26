@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChartsModule } from 'ng2-charts';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZQgG8L6ntkJZarveWX9mvy9f9MMOoNDA',
+    }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
