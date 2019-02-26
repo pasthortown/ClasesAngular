@@ -21,4 +21,14 @@
       <button type="button" class="btn btn-primary mt-2" (click)="sortearPrimerTurno()"><h2>Jugar</h2></button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label>Nivel</label>
+        <select class="form-control" [(ngModel)]="nivelSeleccionado" (change)="sortearPrimerTurno()">
+          <option *ngFor="let nivel of niveles" value="{{nivel.id}}">{{nivel.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>

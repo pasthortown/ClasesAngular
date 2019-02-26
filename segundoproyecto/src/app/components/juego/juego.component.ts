@@ -8,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class JuegoComponent implements OnInit {
   turno: string;
   tablero: any[];
+  niveles = [{id: 0, descripcion: 'Muy Facil'},
+             {id: 1, descripcion: 'Facil'},
+             {id: 2, descripcion: 'Intermedio'},
+             {id: 3, descripcion: 'Dificil'},
+             {id: 4, descripcion: 'Imposible'},
+            ];
+  nivelSeleccionado = 4;
 
   constructor() { }
 
@@ -50,21 +57,65 @@ export class JuegoComponent implements OnInit {
 
   juegaPC() {
     let jugue = false;
-    jugue = this.verificarCasillas('fas fa-angry', 'fas fa-angry');
-    if (!jugue) {
-      jugue = this.verificarCasillas('fas fa-times', 'fas fa-angry');
+    if (this.nivelSeleccionado == 0) {
+      if (!jugue) {
+        this.jugarAzar();
+      }
     }
-    if (!jugue) {
-      jugue = this.TomarCentro('fas fa-angry');
+    if (this.nivelSeleccionado == 1) {
+      jugue = this.verificarCasillas('fas fa-angry', 'fas fa-angry');
+      if (!jugue) {
+        jugue = this.verificarCasillas('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        this.jugarAzar();
+      }
     }
-    if (!jugue) {
-      jugue = this.CuidadoDoble('fas fa-times', 'fas fa-angry');
+
+    if (this.nivelSeleccionado == 2) {
+      jugue = this.verificarCasillas('fas fa-angry', 'fas fa-angry');
+      if (!jugue) {
+        jugue = this.verificarCasillas('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.TomarCentro('fas fa-angry');
+      }
+      if (!jugue) {
+        this.jugarAzar();
+      }
     }
-    if (!jugue) {
-      jugue = this.PriorizarEsquinas('fas fa-angry');
+    if (this.nivelSeleccionado == 3) {
+      jugue = this.verificarCasillas('fas fa-angry', 'fas fa-angry');
+      if (!jugue) {
+        jugue = this.verificarCasillas('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.TomarCentro('fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.CuidadoDoble('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        this.jugarAzar();
+      }
     }
-    if (!jugue) {
-      this.jugarAzar();
+    if (this.nivelSeleccionado == 4) {
+      jugue = this.verificarCasillas('fas fa-angry', 'fas fa-angry');
+      if (!jugue) {
+        jugue = this.verificarCasillas('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.TomarCentro('fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.CuidadoDoble('fas fa-times', 'fas fa-angry');
+      }
+      if (!jugue) {
+        jugue = this.PriorizarEsquinas('fas fa-angry');
+      }
+      if (!jugue) {
+        this.jugarAzar();
+      }
     }
     this.turno = 'Humano';
   }
