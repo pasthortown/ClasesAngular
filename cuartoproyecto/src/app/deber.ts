@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -66,7 +67,7 @@ export class JuegoComponent implements OnInit {
       });
     });
     if (!casillasLibres) {
-      alert('Fin del Juego! Todas las casillas han sido ocupadas!');
+      swal('Fin del Juego!', 'Todas las casillas han sido ocupadas!', 'info');
       return true;
     }
     return false;
@@ -145,13 +146,36 @@ export class JuegoComponent implements OnInit {
 
   alguienGano() {
     if (this.ganaPorFicha('fas fa-angry')) {
-      alert('Fin del Juego!, Perdiste');
+      swal('Fin del Juego!', 'Perdiste', 'error');
       return true;
     }
     if (this.ganaPorFicha('fas fa-times')) {
-      alert('Fin del Juego!, Ganaste');
+      swal('Fin del Juego!', 'Ganaste', 'success');
       return true;
     }
     return false;
   }
 }
+function ganar(){
+  var numEspacios=0;
+  var i=0;
+  for(i=0 ; i < 9 ; i++){
+  if(this.tablero[i] == 0) numEspacios++;
+  }
+//ganar lineas horizontales
+if(this.tablero[0] == this.tablero[1] && this.tablero[1] == this.tablero[2] && this.tablero[0] !=0) return this.tablero[0];
+if(this.tablero[3] == this.tablero[4] && this.tablero[4] == this.tablero[5] && this.tablero[3] !=0) return this.tablero[3];
+if(this.tablero[6] == this.tablero[7] && this.tablero[7] == this.tablero[8] && this.tablero[6] !=0) return this.tablero[6];
+//verticales
+if(this.tablero[0] == this.tablero[3] && this.tablero[3] == this.tablero[6] && this.tablero[0] !=0) return this.tablero[0];
+if(this.tablero[1] == this.tablero[4] && this.tablero[4] == this.tablero[7] && this.tablero[1] !=0) return this.tablero[1];
+if(this.tablero[2] == this.tablero[5] && this.tablero[5] == this.tablero[8] && this.tablero[2] !=0) return this.tablero[2];
+//diagonales
+if(this.tablero[0] == this.tablero[4] && this.tablero[4] == this.tablero[8] && this.tablero[0] !=0) return this.tablero[0];
+if(this.tablero[2] == this.tablero[4] && this.tablero[4] == this.tablero[6] && this.tablero[2] !=0) return this.tablero[2];
+if (numEspacios > 0){
+  return 0;
+  } else {
+  return 3;
+  }
+  }

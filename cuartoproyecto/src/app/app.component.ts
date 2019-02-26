@@ -8,7 +8,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  urlWS = 'https://pokeapi.co/api/v2/pokemon/';
+  urlWS = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150';
   pokemons = [];
   pokemonSeleccionado: any;
   constructor(private http: Http) {
